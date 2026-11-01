@@ -39,3 +39,19 @@ node streams/fundamentals.js
 ## Learning-project notes
 
 This repository contains guided exercises and deliberately small examples. The JSON database is a local file and is not a concurrent or transactional database. There is no test suite or production deployment configuration in the repository. The stream examples illustrate API mechanics rather than a complete upload service.
+
+## Source guide
+
+| Source | What to inspect |
+| --- | --- |
+| [HTTP entry point](scr/server.js) | Native server setup and request dispatch. |
+| [Routes](scr/routes.js) | CRUD handlers and route patterns. |
+| [JSON middleware](scr/middlewares/json.js) | Request body parsing and response content type. |
+| [File persistence](scr/database.js) | Local JSON-file reads and writes. |
+| [Route matching](scr/utils/build-route-path.js) | Conversion of parameterized paths into matching rules. |
+
+## Suggested reading order
+
+Start with `scr/server.js`, follow a matching route in `scr/routes.js`, then inspect the JSON middleware and file-backed database helper. The directory is named `scr` in this repository; use that spelling when opening the files.
+
+The independent examples under `streams/` explore stream behavior separately from the CRUD API. The streamed upload example needs its own receiver on port `3334`; starting the user API on `3333` does not provide that receiver.
